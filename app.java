@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class app {
@@ -9,10 +10,17 @@ public class app {
     QuestionsClass questions = new QuestionsClass();
     public static void main(String[] args) {
         app app = new app();
-        app.run();
+        System.out.print("Are you a student or an administrator: ");
+        String response = app.scanner.nextLine();
+        if(response.equalsIgnoreCase("student")){
+            app.studentFunction();
+        }else if(response.equalsIgnoreCase("administrator")){
+            app.adminFunction();
+        }
+        app.prototypeCourses.saveReviews();
     }
     //checkes the students section and asks them which course they want to evaluate
-    public void run() {
+    public void studentFunction() {
         System.out.print("Enter your section: ");
         char section = scanner.next().charAt(0);
 
@@ -79,4 +87,39 @@ public class app {
         double percentage = (sum / 50) * 100;
         return percentage;
     }
+    void adminFunction() {
+        String password = "admin";
+        System.out.print("Enter password: ");
+        String inputPassword = scanner.nextLine();
+    
+        while (!inputPassword.equals(password)) {
+            System.out.println("Incorrect password try again: ");
+            System.out.print("Enter password: ");
+            inputPassword = scanner.nextLine();
+        }
+    
+        // Load reviews before allowing the administrator to view them
+        prototypeCourses.loadReviews();
+    
+        System.out.print("Which course do you want to see:");
+        String getCourse = scanner.next();
+    
+        for (int j = 0; j < prototypeCourses.coursesToBeEvaluated.length; j++) {
+            if (prototypeCourses.coursesToBeEvaluated[j].equalsIgnoreCase(getCourse)) {
+                ArrayList<Integer> reviews = prototypeCourses.getReviewsForCourse(j);
+                if (!reviews.isEmpty()) {
+                    System.out.println("The reviews for " + getCourse + " are " + calculateThePercentage(j) + "%");
+                } else {
+                    System.out.println("No reviews available for " + getCourse);
+                }
+                break;
+            } else if (j + 1 == prototypeCourses.coursesToBeEvaluated.length) {
+                System.out.println("No such course");
+            }
+        }
+        // Save reviews after the administrator has viewed them
+        prototypeCourses.saveReviews();
+    }
+    
+
 }

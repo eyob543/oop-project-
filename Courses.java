@@ -1,14 +1,15 @@
+ import java.io.*;
 import java.util.ArrayList;
 
 public class Courses {
     ArrayList<ArrayList<Integer>> listOfCourses = new ArrayList<>();
-    ArrayList<Integer> listOfCourses1 = new ArrayList<>();
-    ArrayList<Integer> listOfCourses2 = new ArrayList<>();
-    ArrayList<Integer> listOfCourses3 = new ArrayList<>();
-    ArrayList<Integer> listOfCourses4 = new ArrayList<>();
-    ArrayList<Integer> listOfCourses5 = new ArrayList<>();
-    ArrayList<Integer> listOfCourses6 = new ArrayList<>();
-    ArrayList<Integer> listOfCourses7 = new ArrayList<>();
+    ArrayList<Integer> course1 = new ArrayList<>();
+    ArrayList<Integer> course2 = new ArrayList<>();
+    ArrayList<Integer> course3 = new ArrayList<>();
+    ArrayList<Integer> course4 = new ArrayList<>();
+    ArrayList<Integer> course5 = new ArrayList<>();
+    ArrayList<Integer> course6 = new ArrayList<>();
+    ArrayList<Integer> course7 = new ArrayList<>();
 
     // Constructor
     public Courses(String[] courses) {
@@ -21,17 +22,41 @@ public class Courses {
         this.coursesToBeEvaluated[6] = courses[6];
 
         // Adding ArrayLists to listOfCourses
-        listOfCourses.add(listOfCourses1);
-        listOfCourses.add(listOfCourses2);
-        listOfCourses.add(listOfCourses3);
-        listOfCourses.add(listOfCourses4);
-        listOfCourses.add(listOfCourses5);
-        listOfCourses.add(listOfCourses6);
-        listOfCourses.add(listOfCourses7);
+        listOfCourses.add(course1);
+        listOfCourses.add(course2);
+        listOfCourses.add(course3);
+        listOfCourses.add(course4);
+        listOfCourses.add(course5);
+        listOfCourses.add(course6);
+        listOfCourses.add(course7);
     }
+    Courses(){
 
+    }
     // Other methods can go here...
 
     // The array to store courses to be evaluated
     String[] coursesToBeEvaluated = new String[7];
+    // Save reviews to a file
+ public void saveReviews() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("reviews.dat"))) {
+            oos.writeObject(listOfCourses);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Load reviews from a file
+    public void loadReviews() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("reviews.dat"))) {
+            listOfCourses = (ArrayList<ArrayList<Integer>>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            // If the file doesn't exist or there's an issue reading it, ignore and continue with an empty list
+            listOfCourses = new ArrayList<>();
+        }
+    }
+     // Retrieve reviews for a specific course
+     public ArrayList<Integer> getReviewsForCourse(int index) {
+        return listOfCourses.get(index);
+    }
 }
