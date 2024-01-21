@@ -11,4 +11,28 @@ public class QuestionsClass {
                                 "How would you rate the instructor’s mastery of the material?",
                                 "How well did the instructor answer students’ questions?"
                             };
+
+    String[] labQuestionsArray = {
+            "1. Did the class meet its objectives and engage you? ",
+            "2. Were lab technicians helpful in explaining experiments? ",
+            "3. Where were lab classes held according to the provided academic schedule? ",
+            "4. Did you receive useful feedback on lab reports? ",
+            "5. Did the lab technician provide necessary materials, and was the lab up to standard? "
+    };
+
+    String[] tutorialQuestionsArray = {
+            "1. Did the teacher provide enough examples and explain problem-solving steps effectively? ",
+            "2. Were additional materials such as worksheets, exercises, and reference books provided? ",
+            "3. Where were tutorial classes held according to the provided academic schedule? ",
+            "4. Was the class engaging, informative, and met its overall objectives? ",
+            "5. Did you receive useful feedback on assignments? ",
+    };
+
+    String[] lectureQuestionsArray = {
+            "1. Where were lecture materials provided by the teacher, such as PDFs, PowerPoints, books, and reference materials? ",
+            "2. Were additional materials such as books, reference books, pdfs, and powerpoints provided? ",
+            "3. Where were lecture classes held according to the provided academic schedule? ",
+            "4. Was the class engaging, informative, and met its overall objectives? ",
+            "5. Did you receive useful feedback on assignments and exams? ",
+    };
 }
