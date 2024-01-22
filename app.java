@@ -38,12 +38,11 @@ public class app {
         app.addTeacher(new Teacher(1, "Bereket Dawit", "AE1"));
         app.addTeacher(new Teacher(2, "Solomon Getaye", "AE1"));
         app.addTeacher(new Teacher(3, "Selam Belay", "Workshop"));
-        app.addTeacher(new Teacher(4, "Dagam Girma", "O.O.P."));
-        app.addTeacher(new Teacher(5, "Helen Zewdu", "O.O.P."));
+        app.addTeacher(new Teacher(4, "Dagam Girma", "O.O.P"));
+        app.addTeacher(new Teacher(5, "Helen Zewdu", "O.O.P"));
         app.addTeacher(new Teacher(6, "Almaz Yehun", "Computational Methods"));
         app.addTeacher(new Teacher(7, "Biniyam Tesfaye", "E.M.F"));
         app.addTeacher(new Teacher(8, "Aster Abebe", "Research"));
-
 
         app.addCourse(new Course(101, "AE1"));
         app.addCourse(new Course(102, "Workshop"));
