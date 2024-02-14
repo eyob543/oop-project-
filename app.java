@@ -141,7 +141,7 @@ public class app {
 
                 ArrayList<Teacher> teachersForCourse = getTeachersForCourse(selectedCourse);
 
-                System.out.print("Enter the number corresponding to the teacher: ");
+                System.out.print("Enter the number corresponding to the teacher: \n");
                 for (int i = 0; i < teachersForCourse.size(); i++) {
                     System.out.println((i + 1) + ". " + teachersForCourse.get(i).getName());
                 }
@@ -333,7 +333,7 @@ public class app {
 
                 ArrayList<Teacher> teachersForCourse = getTeachersForCourse(selectedCourse);
 
-                System.out.print("Enter the number corresponding to the teacher: ");
+                System.out.print("Enter the number corresponding to the teacher: \n");
                 for (int i = 0; i < teachersForCourse.size(); i++) {
                     System.out.println((i + 1) + ". " + teachersForCourse.get(i).getName());
                 }
@@ -401,6 +401,12 @@ public class app {
         int userChoice;
 
         do {
+            Teacher teacher = getTeacherByName(inputName);
+
+            if (teacher == null) {
+                System.out.println("Error: Teacher not found.");
+                System.exit(0);
+            }
 
             System.out.println("Select the type of course (0 to exit):");
             System.out.println("1. Tutorial Questions");
@@ -408,8 +414,6 @@ public class app {
             System.out.println("3. Lecture Questions");
 
             userChoice = scanner.nextInt();
-
-            Teacher teacher = getTeacherByName(inputName);
 
             switch (userChoice) {
                 case 1:
